@@ -13,4 +13,6 @@ When(/^login with user name "(.*?)" and password "(.*?)"$/) do |user_name, passw
 end
 
 Then(/^login successfully$/) do
+	container.set frame('Dashboard')
+	label('Dashboard')
 end

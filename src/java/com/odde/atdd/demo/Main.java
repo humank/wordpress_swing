@@ -2,6 +2,8 @@ package com.odde.atdd.demo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
 
@@ -13,7 +15,15 @@ public class Main {
         JPanel panel = new JPanel();
         frame.setContentPane(panel);
 
-        panel.add(new JButton("login"));
+        JButton login = new JButton("login");
+        panel.add(login);
+
+        login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new DashboardPage();
+            }
+        });
 
         addTextFieldWithLabel(panel, "user_name", "Please input user name");
 
