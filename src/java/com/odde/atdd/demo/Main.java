@@ -25,32 +25,28 @@ public class Main {
     }
 
     private static void addPasswordFieldWithLabel(JPanel panel, String labelName, String defaultText) {
-        JLabel label = createAndAddLabel(panel, labelName);
-        JPasswordField password = createAndAddPassword(panel, defaultText);
-        label.setLabelFor(password);
+        newLabel(panel, labelName).setLabelFor(newPassword(panel, defaultText));
     }
 
     private static void addTextFieldWithLabel(JPanel panel, String labelName, String defaultText) {
-        JLabel label = createAndAddLabel(panel, labelName);
-        JTextField text = createAndAddText(defaultText, label);
-        panel.add(text);
+        newLabel(panel, labelName).setLabelFor(newText(panel, defaultText));
     }
 
-    private static JPasswordField createAndAddPassword(JPanel panel, String defaultText) {
+    private static JPasswordField newPassword(JPanel panel, String defaultText) {
         JPasswordField password = new JPasswordField(defaultText);
         panel.add(password);
         return password;
     }
 
-    private static JLabel createAndAddLabel(JPanel panel, String labelName) {
+    private static JLabel newLabel(JPanel panel, String labelName) {
         JLabel label = new JLabel(labelName);
         panel.add(label);
         return label;
     }
 
-    private static JTextField createAndAddText(String defaultText, JLabel label) {
+    private static JTextField newText(JPanel panel, String defaultText) {
         JTextField text = new JTextField(defaultText);
-        label.setLabelFor(text);
+        panel.add(text);
         return text;
     }
 
