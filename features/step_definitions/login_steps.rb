@@ -1,7 +1,7 @@
 require '/Users/josephyao/Documents/training_workspace/vagrant-android-develop/WordPress-Swing/lib/swinger/lib/swinger'
 
 Given(/^there is an existing user named "(.*?)" and password "(.*?)"$/) do |user_name, password|
-
+	timeout('DialogWaiter.WaitDialogTimeout',1000)
 end
 
 When(/^login with user name "(.*?)" and password "(.*?)"$/) do |user_name, password|
@@ -15,4 +15,9 @@ end
 Then(/^login successfully$/) do
 	container.set frame('Dashboard')
 	label('Dashboard')
+end
+
+Then(/^login failed with error "([^"]*)"$/) do |error_message|
+	container.set dialog(error_message)
+	dialog(error_message).visible?.should be_true
 end
