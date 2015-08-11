@@ -2,8 +2,6 @@ package com.odde.atdd.demo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class LoginPage extends JFrame {
 
@@ -11,31 +9,34 @@ public class LoginPage extends JFrame {
         super("WordPress-Swing");
         setSize(new Dimension(640, 480));
 
-        JPanel panel = new JPanel();
-        setContentPane(panel);
+        JPanel panel = newContentPanel();
 
-        JButton login = new JButton("login");
-        panel.add(login);
+        newButton(panel, "login").addActionListener(new LoginActionListener());
 
-        login.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new DashboardPage();
-            }
-        });
+        newTextFieldWithLabel(panel, "user_name", "Please input user name");
 
-        addTextFieldWithLabel(panel, "user_name", "Please input user name");
+        newPasswordFieldWithLabel(panel, "password", "Please input password");
 
-        addPasswordFieldWithLabel(panel, "password", "Please input password");
-
-        addTextFieldWithLabel(panel, "host_site", "Please input host site");
+        newTextFieldWithLabel(panel, "host_site", "Please input host site");
     }
 
-    private void addPasswordFieldWithLabel(JPanel panel, String labelName, String defaultText) {
+    private JPanel newContentPanel() {
+        JPanel panel = new JPanel();
+        setContentPane(panel);
+        return panel;
+    }
+
+    private JButton newButton(JPanel panel, String name) {
+        JButton login = new JButton(name);
+        panel.add(login);
+        return login;
+    }
+
+    private void newPasswordFieldWithLabel(JPanel panel, String labelName, String defaultText) {
         newLabel(panel, labelName).setLabelFor(newPassword(panel, defaultText));
     }
 
-    private void addTextFieldWithLabel(JPanel panel, String labelName, String defaultText) {
+    private void newTextFieldWithLabel(JPanel panel, String labelName, String defaultText) {
         newLabel(panel, labelName).setLabelFor(newText(panel, defaultText));
     }
 
@@ -56,4 +57,5 @@ public class LoginPage extends JFrame {
         panel.add(text);
         return text;
     }
+
 }
