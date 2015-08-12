@@ -11,7 +11,7 @@ public class LoginPage extends JFrame {
 
         JPanel panel = newContentPanel();
 
-        newButton(panel, "login").addActionListener(new LoginActionListener());
+        newButton(panel, "login").addActionListener(new LoginActionListener(this));
 
         newTextFieldWithLabel(panel, "user_name", "Please input user name");
 
