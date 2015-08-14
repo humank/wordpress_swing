@@ -18,6 +18,8 @@ public class LoginPage extends JFrame {
         newPasswordFieldWithLabel(panel, "password", "Please input password");
 
         newTextFieldWithLabel(panel, "host_site", "Please input host site");
+
+        setVisible(true);
     }
 
     private JPanel newContentPanel() {
