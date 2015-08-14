@@ -1,10 +1,12 @@
 package com.odde.atdd.demo;
 
+import net.bican.wordpress.Wordpress;
+import redstone.xmlrpc.XmlRpcFault;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.Map;
+import java.net.MalformedURLException;
 
 public class LoginActionListener implements ActionListener {
 
@@ -17,19 +19,16 @@ public class LoginActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        FetchBlogListWPOrg fetchBlogListWPOrg = new FetchBlogListWPOrg("odd-e", "s3cr3t", "http://172.28.128.3/xmlrpc.php");
-        fetchBlogListWPOrg.execute(new FetchBlogListAbstract.Callback() {
-            @Override
-            public void onSuccess(final List<Map<String, Object>> userBlogList) {
-                new DashboardPage();
-            }
+        try {
+            Wordpress wp = new Wordpress("odd-e", "s3cr3t", "http://172.28.128.3/xmlrpc.php");
 
-            @Override
-            public void onError(final int messageId, final boolean httpAuthRequired,
-                                final boolean erroneousSslCertificate) {
-                new JDialog(LoginActionListener.this.loginPage, "incorrect user name or password");
-            };
-        });
+            wp.getUsersBlogs();
+
+            new DashboardPage();
+        } catch (MalformedURLException e1) {
+        } catch (XmlRpcFault xmlRpcFault) {
+            new JDialog(LoginActionListener.this.loginPage, "incorrect user name or password").setVisible(true);
+        }
 
     }
 }
