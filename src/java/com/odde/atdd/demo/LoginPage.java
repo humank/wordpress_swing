@@ -5,6 +5,8 @@ import java.awt.*;
 
 public class LoginPage extends JFrame {
 
+    private final JPasswordField password;
+
     public LoginPage() {
         super("WordPress-Swing");
         setSize(new Dimension(640, 480));
@@ -15,7 +17,7 @@ public class LoginPage extends JFrame {
 
         newTextFieldWithLabel(panel, "user_name", "Please input user name");
 
-        newPasswordFieldWithLabel(panel, "password", "Please input password");
+        password = newPasswordFieldWithLabel(panel, "password", "Please input password");
 
         newTextFieldWithLabel(panel, "host_site", "Please input host site");
 
@@ -34,8 +36,10 @@ public class LoginPage extends JFrame {
         return login;
     }
 
-    private void newPasswordFieldWithLabel(JPanel panel, String labelName, String defaultText) {
-        newLabel(panel, labelName).setLabelFor(newPassword(panel, defaultText));
+    private JPasswordField newPasswordFieldWithLabel(JPanel panel, String labelName, String defaultText) {
+        JPasswordField field = newPassword(panel, defaultText);
+        newLabel(panel, labelName).setLabelFor(field);
+        return field;
     }
 
     private void newTextFieldWithLabel(JPanel panel, String labelName, String defaultText) {
@@ -60,4 +64,11 @@ public class LoginPage extends JFrame {
         return text;
     }
 
+    public String getPassword() {
+        return String.valueOf(password.getPassword());
+    }
+
+    public void showError(String errorMsg) {
+        new JDialog(this, errorMsg).setVisible(true);
+    }
 }
