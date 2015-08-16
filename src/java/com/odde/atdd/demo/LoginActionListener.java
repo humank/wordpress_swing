@@ -18,7 +18,7 @@ public class LoginActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         try {
-            Wordpress wp = new Wordpress("odd-e", this.loginPage.getPassword(), "http://172.28.128.3/xmlrpc.php");
+            Wordpress wp = new Wordpress(this.loginPage.getUserName(), this.loginPage.getPassword(), this.loginPage.getHostSite() + "/xmlrpc.php");
 
             wp.getUsersBlogs();
 

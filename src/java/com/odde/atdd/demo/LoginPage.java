@@ -6,6 +6,8 @@ import java.awt.*;
 public class LoginPage extends JFrame {
 
     private final JPasswordField password;
+    private final JTextField userName;
+    private final JTextField hostSite;
 
     public LoginPage() {
         super("WordPress-Swing");
@@ -15,11 +17,11 @@ public class LoginPage extends JFrame {
 
         newButton(panel, "login").addActionListener(new LoginActionListener(this));
 
-        newTextFieldWithLabel(panel, "user_name", "Please input user name");
+        userName = newTextFieldWithLabel(panel, "user_name", "Please input user name");
 
         password = newPasswordFieldWithLabel(panel, "password", "Please input password");
 
-        newTextFieldWithLabel(panel, "host_site", "Please input host site");
+        hostSite = newTextFieldWithLabel(panel, "host_site", "Please input host site");
 
         setVisible(true);
     }
@@ -42,8 +44,10 @@ public class LoginPage extends JFrame {
         return field;
     }
 
-    private void newTextFieldWithLabel(JPanel panel, String labelName, String defaultText) {
-        newLabel(panel, labelName).setLabelFor(newText(panel, defaultText));
+    private JTextField newTextFieldWithLabel(JPanel panel, String labelName, String defaultText) {
+        JTextField textField = newText(panel, defaultText);
+        newLabel(panel, labelName).setLabelFor(textField);
+        return textField;
     }
 
     private JPasswordField newPassword(JPanel panel, String defaultText) {
@@ -70,5 +74,13 @@ public class LoginPage extends JFrame {
 
     public void showError(String errorMsg) {
         new JDialog(this, errorMsg).setVisible(true);
+    }
+
+    public String getUserName() {
+        return userName.getText();
+    }
+
+    public String getHostSite() {
+        return hostSite.getText();
     }
 }
