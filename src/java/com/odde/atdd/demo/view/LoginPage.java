@@ -1,4 +1,6 @@
-package com.odde.atdd.demo;
+package com.odde.atdd.demo.view;
+
+import com.odde.atdd.demo.controller.LoginActionListener;
 
 import javax.swing.*;
 import java.awt.*;

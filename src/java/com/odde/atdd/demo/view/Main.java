@@ -1,4 +1,4 @@
-package com.odde.atdd.demo;
+package com.odde.atdd.demo.view;
 
 import javax.swing.*;
 
