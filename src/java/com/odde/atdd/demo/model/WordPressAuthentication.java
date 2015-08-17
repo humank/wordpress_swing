@@ -24,4 +24,9 @@ public class WordPressAuthentication implements Authentication {
                 onError.accept("incorrect user name or password");
         });
     }
+
+    @Override
+    public String getUserName() {
+        return userName;
+    }
 }
