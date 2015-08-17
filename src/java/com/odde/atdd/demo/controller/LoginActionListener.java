@@ -24,6 +24,11 @@ public class LoginActionListener implements ActionListener {
             return;
         }
 
+        if (authentication.getPassword().isEmpty()) {
+            this.loginPage.showError("please input password");
+            return;
+        }
+
         authentication.authenticate(() -> {
             new DashboardPage();
         }, (String errorMessage) -> {

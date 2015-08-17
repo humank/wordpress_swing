@@ -29,4 +29,9 @@ public class WordPressAuthentication implements Authentication {
     public String getUserName() {
         return userName;
     }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
 }

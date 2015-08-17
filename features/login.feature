@@ -13,3 +13,7 @@ Feature: Login
   Scenario: Login Failed with empty user name
 	When login with user name "" and password "anyPassword"
 	Then login failed with error "please input user name"
+
+  Scenario: Login Failed with empty password
+	When login with user name "anyUserName" and password ""
+	Then login failed with error "please input password"
