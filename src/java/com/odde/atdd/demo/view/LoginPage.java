@@ -1,6 +1,7 @@
 package com.odde.atdd.demo.view;
 
 import com.odde.atdd.demo.controller.LoginActionListener;
+import com.odde.atdd.demo.model.Authentication;
 
 import javax.swing.*;
 import java.awt.*;
@@ -70,19 +71,11 @@ public class LoginPage extends JFrame {
         return text;
     }
 
-    public String getPassword() {
-        return String.valueOf(password.getPassword());
-    }
-
     public void showError(String errorMsg) {
         new JDialog(this, errorMsg).setVisible(true);
     }
 
-    public String getUserName() {
-        return userName.getText();
-    }
-
-    public String getHostSite() {
-        return hostSite.getText();
+    public Authentication getAuthentication() {
+        return new Authentication(userName.getText(), String.valueOf(password.getPassword()), hostSite.getText() + "/xmlrpc.php");
     }
 }
