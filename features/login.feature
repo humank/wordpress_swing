@@ -10,10 +10,11 @@ Feature: Login
 	When login with user name "odd-e" and password "wrong_password"
 	Then login failed with error "incorrect user name or password"
 
-  Scenario: Login Failed with empty user name
-	When login with user name "" and password "anyPassword"
-	Then login failed with error "please input user name"
+  Scenario Outline: Login Failed even before authentication
+	When login with user name "<user_name>" and password "<password>"
+	Then login failed with error "<message>"
+	Examples:
+	|user_name		|password 		|message				|
+	|				|anyPassword	|please input user name |
+	|anyUserName	|				|please input password  |
 
-  Scenario: Login Failed with empty password
-	When login with user name "anyUserName" and password ""
-	Then login failed with error "please input password"
