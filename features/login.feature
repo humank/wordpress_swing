@@ -11,6 +11,5 @@ Feature: Login
 	Then login failed with error "incorrect user name or password"
 
   Scenario: Login Failed with empty user name
-    Given there is an existing user named "odd-e" and password "s3cr3t"
-	When login with user name "" and password "s3cr3t"
+	When login with user name "" and password "anyPassword"
 	Then login failed with error "please input user name"

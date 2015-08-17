@@ -1,8 +1,8 @@
 Given(/^there is an existing user named "(.*?)" and password "(.*?)"$/) do |user_name, password|
-	timeout('DialogWaiter.WaitDialogTimeout',1000)
 end
 
 When(/^login with user name "(.*?)" and password "(.*?)"$/) do |user_name, password|
+	timeout('DialogWaiter.WaitDialogTimeout',1000)
   	container.set frame('WordPress-Swing')
   	text_field('user_name').text = user_name
   	password_field('password').text = password
