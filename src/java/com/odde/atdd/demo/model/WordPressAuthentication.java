@@ -2,8 +2,6 @@ package com.odde.atdd.demo.model;
 
 import com.odde.atdd.demo.adaptor.WordPressAdaptor;
 
-import java.util.function.Consumer;
-
 public class WordPressAuthentication implements Authentication {
 
     private final String userName;
@@ -18,11 +16,8 @@ public class WordPressAuthentication implements Authentication {
         this.wpAdaptor = adaptor;
     }
 
-    public void authenticate(final Runnable onSuccess, final Consumer<String> onError) {
-        this.wpAdaptor.authenticate(userName, password, hostSite,
-                onSuccess, () -> {
-                onError.accept("incorrect user name or password");
-        });
+    public void authenticate(final Runnable onSuccess, final Runnable onFailed) {
+        this.wpAdaptor.authenticate(userName, password, hostSite, onSuccess, onFailed);
     }
 
     @Override

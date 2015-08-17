@@ -31,8 +31,8 @@ public class LoginActionListener implements ActionListener {
 
         authentication.authenticate(() -> {
             new DashboardPage();
-        }, (String errorMessage) -> {
-            this.loginPage.showError(errorMessage);
+        }, () -> {
+            this.loginPage.showError("incorrect user name or password");
         });
     }
 }
