@@ -1,7 +1,9 @@
 require_relative 'dependencies_and_sut'
 
-Java::com.odde.atdd.demo.view::Main.main([].to_java(:string))
+Before do |scenario|
+	Java::com.odde.atdd.demo.view::Main.main([].to_java(:string))
+end
 
-at_exit do 
-  java.lang.System.exit(0)
+After do |scenario|
+  	frame('WordPress-Swing').close()
 end
