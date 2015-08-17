@@ -8,16 +8,18 @@ public class WordPressAuthentication implements Authentication {
 
     private final String userName;
     private final String password;
+    private final String hostSite;
     private final WordPressAdaptor wpAdaptor;
 
-    public WordPressAuthentication(String userName, String password, WordPressAdaptor adaptor) {
+    public WordPressAuthentication(String userName, String password, String hostSite, WordPressAdaptor adaptor) {
         this.userName = userName;
         this.password = password;
+        this.hostSite = hostSite;
         this.wpAdaptor = adaptor;
     }
 
     public void authenticate(final Runnable onSuccess, final Consumer<String> onError) {
-        this.wpAdaptor.authenticate(userName, password,
+        this.wpAdaptor.authenticate(userName, password, hostSite,
                 onSuccess, () -> {
                 onError.accept("incorrect user name or password");
         });

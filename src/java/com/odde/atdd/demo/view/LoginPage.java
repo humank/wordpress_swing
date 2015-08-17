@@ -11,6 +11,7 @@ public class LoginPage extends JFrame {
 
     private final JPasswordField password;
     private final JTextField userName;
+    private final JTextField hostSite;
 
     public LoginPage() {
         super("WordPress-Swing");
@@ -23,6 +24,8 @@ public class LoginPage extends JFrame {
         userName = newTextFieldWithLabel(panel, "user_name", "Please input user name");
 
         password = newPasswordFieldWithLabel(panel, "password", "Please input password");
+
+        hostSite = newTextFieldWithLabel(panel, "host_site", "Please input host site");
 
         setVisible(true);
     }
@@ -74,6 +77,6 @@ public class LoginPage extends JFrame {
     }
 
     public Authentication getAuthentication() {
-        return AuthenticationFactory.create(userName.getText(), String.valueOf(password.getPassword()));
+        return AuthenticationFactory.create(userName.getText(), String.valueOf(password.getPassword()), hostSite.getText());
     }
 }
