@@ -6,4 +6,8 @@ public class PostsFactory {
     public static Posts create() {
         return new WordPressPosts(new WordPressAdaptor());
     }
+
+    public static Post createPost(String title, Integer id) {
+        return new WordPressPost(title, id, new WordPressAdaptor());
+    }
 }

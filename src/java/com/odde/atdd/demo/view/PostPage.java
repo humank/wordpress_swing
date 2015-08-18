@@ -1,7 +1,6 @@
 package com.odde.atdd.demo.view;
 
 import com.odde.atdd.demo.controller.CommentActionListener;
-import com.odde.atdd.demo.model.Comment;
 import com.odde.atdd.demo.model.Post;
 
 import javax.swing.*;
@@ -13,7 +12,7 @@ public class PostPage extends JDialog {
 
     public PostPage(Window owner, Post post) {
         super(owner);
-        setTitle(post.title);
+        setTitle(post.getTitle());
         setSize(new Dimension(640, 480));
 
         ContentPanel contentPanel = new ContentPanel(this);
@@ -22,7 +21,7 @@ public class PostPage extends JDialog {
 
         contentPanel.newButton("post").addActionListener(new CommentActionListener(this, post));
 
-        post.processAllComments((Comment comment) -> {
+        post.processAllComments(comment -> {
             contentPanel.newLabel(comment.content);
         });
 

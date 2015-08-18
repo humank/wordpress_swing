@@ -18,7 +18,7 @@ public class DashboardPage extends JDialog {
         contentPanel.newLabel("Dashboard");
 
         posts.processAllPosts((Post post) -> {
-            contentPanel.newButton(post.title)
+            contentPanel.newButton(post.getTitle())
                     .addActionListener(new PostActionListener(this, post));
         });
 
