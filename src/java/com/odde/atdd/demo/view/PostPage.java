@@ -1,6 +1,7 @@
 package com.odde.atdd.demo.view;
 
 import com.odde.atdd.demo.controller.CommentActionListener;
+import com.odde.atdd.demo.model.Comment;
 import com.odde.atdd.demo.model.Post;
 
 import javax.swing.*;
@@ -20,6 +21,10 @@ public class PostPage extends JDialog {
         comment = contentPanel.newTextFieldWithLabel("comment", "Please add your comment");
 
         contentPanel.newButton("post").addActionListener(new CommentActionListener(this, post));
+
+        post.processAllComments((Comment comment) -> {
+            contentPanel.newLabel(comment.content);
+        });
 
         setVisible(true);
     }

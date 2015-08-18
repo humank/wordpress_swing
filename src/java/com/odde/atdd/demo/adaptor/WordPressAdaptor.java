@@ -1,5 +1,6 @@
 package com.odde.atdd.demo.adaptor;
 
+import com.odde.atdd.demo.model.Comment;
 import com.odde.atdd.demo.model.Credential;
 import net.bican.wordpress.Post;
 import net.bican.wordpress.Wordpress;
@@ -50,6 +51,20 @@ public class WordPressAdaptor {
         } catch (InsufficientRightsException e) {
             e.printStackTrace();
         } catch (ObjectNotFoundException e) {
+            e.printStackTrace();
+        } catch (XmlRpcFault xmlRpcFault) {
+            xmlRpcFault.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getAllComments(Credential credential, com.odde.atdd.demo.model.Post post, Consumer<Comment> onEachComment) {
+        try {
+            for (net.bican.wordpress.Comment comment : wordPressWithCredential(credential).getComments("all", post.id, 0, 0)) {
+                onEachComment.accept(new Comment(comment.getContent()));
+            }
+        } catch (InsufficientRightsException e) {
             e.printStackTrace();
         } catch (XmlRpcFault xmlRpcFault) {
             xmlRpcFault.printStackTrace();

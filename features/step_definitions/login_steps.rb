@@ -6,7 +6,7 @@ When(/^login with user name "(.*?)" and password "(.*?)"$/) do |user_name, passw
   	container.set page_dialog('Sign in')
   	text_field('user_name').text = user_name
   	password_field('password').text = password
-  	text_field('host_site').text = 'http://172.28.128.3'
+  	text_field('host_site').text = 'http://odd-pi.local'
 	button("login").do_click()
 end
 
