@@ -57,9 +57,7 @@ public class WordPressAdaptor {
     }
 
     public void comment(Credential credential, com.odde.atdd.demo.model.Post post, String comment) {
-        try_and_output_any_unexpected_exceptions(() -> {
-            wordPressWithCredential(credential).newComment(post.getId(), 0, comment, null, null, null);
-        });
+        try_and_output_any_unexpected_exceptions(() -> wordPressWithCredential(credential).newComment(post.getId(), 0, comment, null, null, null));
     }
 
     public void getAllComments(Credential credential, com.odde.atdd.demo.model.Post post, Consumer<com.odde.atdd.demo.model.Comment> onEachComment) {

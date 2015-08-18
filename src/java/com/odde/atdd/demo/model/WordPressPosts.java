@@ -12,9 +12,7 @@ public class WordPressPosts implements Posts {
     }
 
     public void processAllPosts(final Consumer<Post> onEachPost) {
-        wordPressAdaptor.getAllPosts(CredentialFactory.createAdmin(), (Post post) -> {
-            onEachPost.accept(post);
-        });
+        wordPressAdaptor.getAllPosts(CredentialFactory.createAdmin(), post -> onEachPost.accept(post));
     }
 
 }

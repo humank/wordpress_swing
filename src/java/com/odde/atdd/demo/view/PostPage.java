@@ -21,9 +21,7 @@ public class PostPage extends JDialog {
 
         contentPanel.newButton("post").addActionListener(new CommentActionListener(this, post));
 
-        post.processAllComments(comment -> {
-            contentPanel.newLabel(comment.content);
-        });
+        post.processAllComments(comment -> contentPanel.newLabel(comment.content));
 
         setVisible(true);
     }

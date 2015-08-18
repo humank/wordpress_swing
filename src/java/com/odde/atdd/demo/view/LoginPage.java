@@ -35,7 +35,7 @@ public class LoginPage extends JDialog {
         new JDialog(this, errorMsg).setVisible(true);
     }
 
-    public Credential getAuthentication() {
+    public Credential getCredential() {
         return CredentialFactory.create(userName.getText(), String.valueOf(password.getPassword()), hostSite.getText());
     }
 }

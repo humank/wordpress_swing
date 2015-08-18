@@ -18,7 +18,7 @@ public class LoginActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Credential credential = this.loginPage.getAuthentication();
+        Credential credential = this.loginPage.getCredential();
 
         if (credential.getUserName().isEmpty()) {
             this.loginPage.showError("please input user name");
@@ -33,8 +33,6 @@ public class LoginActionListener implements ActionListener {
         credential.authenticate(() -> {
             new DashboardPage(this.loginPage.getOwner(), PostsFactory.createPosts());
             this.loginPage.dispose();
-        }, () -> {
-            this.loginPage.showError("incorrect user name or password");
-        });
+        }, () -> this.loginPage.showError("incorrect user name or password"));
     }
 }

@@ -1,7 +1,6 @@
 package com.odde.atdd.demo.view;
 
 import com.odde.atdd.demo.controller.PostActionListener;
-import com.odde.atdd.demo.model.Post;
 import com.odde.atdd.demo.model.Posts;
 
 import javax.swing.*;
@@ -17,10 +16,9 @@ public class DashboardPage extends JDialog {
         ContentPanel contentPanel = new ContentPanel(this);
         contentPanel.newLabel("Dashboard");
 
-        posts.processAllPosts((Post post) -> {
-            contentPanel.newButton(post.getTitle())
-                    .addActionListener(new PostActionListener(this, post));
-        });
+        posts.processAllPosts(post ->
+                contentPanel.newButton(post.getTitle())
+                    .addActionListener(new PostActionListener(this, post)));
 
         setVisible(true);
     }

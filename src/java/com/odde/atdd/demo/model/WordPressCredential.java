@@ -7,17 +7,17 @@ public class WordPressCredential implements Credential {
     private final String userName;
     private final String password;
     private final String hostSite;
-    private final WordPressAdaptor wpAdaptor;
+    private final WordPressAdaptor wordPressAdaptor;
 
     public WordPressCredential(String userName, String password, String hostSite, WordPressAdaptor adaptor) {
         this.userName = userName;
         this.password = password;
         this.hostSite = hostSite;
-        this.wpAdaptor = adaptor;
+        this.wordPressAdaptor = adaptor;
     }
 
     public void authenticate(final Runnable onSuccess, final Runnable onFailed) {
-        this.wpAdaptor.authenticate(this, onSuccess, onFailed);
+        this.wordPressAdaptor.authenticate(this, onSuccess, onFailed);
     }
 
     @Override
