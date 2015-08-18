@@ -1,14 +1,14 @@
 package com.odde.atdd.demo.view;
 
-import com.odde.atdd.demo.adaptor.WordPressAdaptor;
+import com.odde.atdd.demo.model.Post;
+import com.odde.atdd.demo.model.Posts;
 
 import javax.swing.*;
-import java.util.List;
 import java.awt.*;
 
 public class DashboardPage extends JFrame {
 
-    public DashboardPage() {
+    public DashboardPage(Posts posts) {
         super("Dashboard");
         setSize(new Dimension(640, 480));
 
@@ -16,13 +16,9 @@ public class DashboardPage extends JFrame {
 
         newLabel(panel, "Dashboard");
 
-        WordPressAdaptor wordPressAdaptor = new WordPressAdaptor();
-
-        List<String> allPosts = wordPressAdaptor.getAllPosts();
-
-        for (String postName : allPosts) {
-            newButton(panel, postName);
-        }
+        posts.processAllPosts((Post post) -> {
+            newButton(panel, post.getTitle());
+        });
 
         setVisible(true);
     }
