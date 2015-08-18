@@ -7,14 +7,15 @@ import com.odde.atdd.demo.model.CredentialFactory;
 import javax.swing.*;
 import java.awt.*;
 
-public class LoginPage extends JFrame {
+public class LoginPage extends JDialog {
 
     private final JPasswordField password;
     private final JTextField userName;
     private final JTextField hostSite;
 
-    public LoginPage() {
-        super("WordPress-Swing");
+    public LoginPage(Window owner) {
+        super(owner);
+        setTitle("Sign in");
         setSize(new Dimension(640, 480));
 
         ContentPanel contentPanel = new ContentPanel(this);

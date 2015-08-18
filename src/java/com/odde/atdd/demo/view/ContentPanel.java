@@ -6,9 +6,9 @@ public class ContentPanel {
 
     private final JPanel panel;
 
-    public ContentPanel(JFrame frame) {
+    public ContentPanel(JDialog dialog) {
         this.panel = new JPanel();
-        frame.setContentPane(panel);
+        dialog.setContentPane(panel);
     }
 
     public JLabel newLabel(String name) {

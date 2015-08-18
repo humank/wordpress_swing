@@ -9,7 +9,11 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new LoginPage();
+                new JFrame("WordPress-Swing") {{
+                    setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    setVisible(true);
+                    new LoginPage(this);
+                }};
             }
         });
 

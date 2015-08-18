@@ -7,10 +7,11 @@ import com.odde.atdd.demo.model.Posts;
 import javax.swing.*;
 import java.awt.*;
 
-public class DashboardPage extends JFrame {
+public class DashboardPage extends JDialog {
 
-    public DashboardPage(Posts posts) {
-        super("Dashboard");
+    public DashboardPage(Window owner, Posts posts) {
+        super(owner);
+        setTitle("Dashboard");
         setSize(new Dimension(640, 480));
 
         ContentPanel contentPanel = new ContentPanel(this);
@@ -18,7 +19,7 @@ public class DashboardPage extends JFrame {
 
         posts.processAllPosts((Post post) -> {
             contentPanel.newButton(post.title)
-                    .addActionListener(new PostActionListener(post));
+                    .addActionListener(new PostActionListener(this, post));
         });
 
         setVisible(true);

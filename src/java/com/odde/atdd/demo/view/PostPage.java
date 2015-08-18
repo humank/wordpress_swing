@@ -6,12 +6,13 @@ import com.odde.atdd.demo.model.Post;
 import javax.swing.*;
 import java.awt.*;
 
-public class PostPage extends JFrame{
+public class PostPage extends JDialog {
 
     private final JTextField comment;
 
-    public PostPage(Post post) {
-        super(post.title);
+    public PostPage(Window owner, Post post) {
+        super(owner);
+        setTitle(post.title);
         setSize(new Dimension(640, 480));
 
         ContentPanel contentPanel = new ContentPanel(this);

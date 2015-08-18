@@ -3,7 +3,7 @@ end
 
 When(/^login with user name "(.*?)" and password "(.*?)"$/) do |user_name, password|
 	timeout('DialogWaiter.WaitDialogTimeout',1000)
-  	container.set frame('WordPress-Swing')
+  	container.set page_dialog('Sign in')
   	text_field('user_name').text = user_name
   	password_field('password').text = password
   	text_field('host_site').text = 'http://172.28.128.3'
@@ -11,8 +11,7 @@ When(/^login with user name "(.*?)" and password "(.*?)"$/) do |user_name, passw
 end
 
 Then(/^login successfully$/) do
-	container.set frame('Dashboard')
-	expect(label('Dashboard').visible?).to eq(true)
+	expect(page_dialog('Dashboard').visible?).to eq(true)
 end
 
 Then(/^login failed with error "([^"]*)"$/) do |error_message|
