@@ -1,5 +1,6 @@
 package com.odde.atdd.demo.adaptor;
 
+import com.odde.atdd.demo.model.Credential;
 import net.bican.wordpress.Post;
 import net.bican.wordpress.Wordpress;
 import net.bican.wordpress.exceptions.InsufficientRightsException;
@@ -23,9 +24,9 @@ public class WordPressAdaptor {
         }
     }
 
-    public void getAllPosts(final Consumer<com.odde.atdd.demo.model.Post> onEachPost) {
+    public void getAllPosts(Credential credential, final Consumer<com.odde.atdd.demo.model.Post> onEachPost) {
         try {
-            for (Post post : new Wordpress("odd-e", "s3cr3t", "http://172.28.128.3/xmlrpc.php").getPosts())
+            for (Post post : new Wordpress(credential.getUserName(), credential.getPassword(), credential.getHostSite()+ "/xmlrpc.php").getPosts())
                 onEachPost.accept(new com.odde.atdd.demo.model.Post(post.getPost_title()));
         } catch (MalformedURLException e) {
             e.printStackTrace();

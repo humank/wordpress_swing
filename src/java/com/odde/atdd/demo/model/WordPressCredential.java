@@ -29,4 +29,9 @@ public class WordPressCredential implements Credential {
     public String getPassword() {
         return password;
     }
+
+    @Override
+    public String getHostSite() {
+        return hostSite;
+    }
 }
