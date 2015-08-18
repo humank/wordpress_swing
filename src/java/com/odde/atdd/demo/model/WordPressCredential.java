@@ -17,7 +17,7 @@ public class WordPressCredential implements Credential {
     }
 
     public void authenticate(final Runnable onSuccess, final Runnable onFailed) {
-        this.wpAdaptor.authenticate(userName, password, hostSite, onSuccess, onFailed);
+        this.wpAdaptor.authenticate(this, onSuccess, onFailed);
     }
 
     @Override

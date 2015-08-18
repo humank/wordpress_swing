@@ -11,9 +11,9 @@ import java.util.function.Consumer;
 
 public class WordPressAdaptor {
 
-    public void authenticate(String userName, String password, String hostSite, final Runnable onSuccess, final Runnable onFailed) {
+    public void authenticate(Credential credential, final Runnable onSuccess, final Runnable onFailed) {
         try {
-            new Wordpress(userName, password, hostSite + "/xmlrpc.php").getProfile();
+            wordPressWithCredential(credential).getProfile();
             onSuccess.run();
         } catch (XmlRpcFault xmlRpcFault) {
             onFailed.run();
@@ -24,9 +24,17 @@ public class WordPressAdaptor {
         }
     }
 
+    private Wordpress wordPressWithCredential(Credential credential) throws MalformedURLException {
+        return new Wordpress(credential.getUserName(), credential.getPassword(), xmlrpcUrl(credential));
+    }
+
+    private String xmlrpcUrl(Credential credential) {
+        return credential.getHostSite() + "/xmlrpc.php";
+    }
+
     public void getAllPosts(Credential credential, final Consumer<com.odde.atdd.demo.model.Post> onEachPost) {
         try {
-            for (Post post : new Wordpress(credential.getUserName(), credential.getPassword(), credential.getHostSite()+ "/xmlrpc.php").getPosts())
+            for (Post post : wordPressWithCredential(credential).getPosts())
                 onEachPost.accept(new com.odde.atdd.demo.model.Post(post.getPost_title()));
         } catch (MalformedURLException e) {
             e.printStackTrace();
