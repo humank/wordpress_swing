@@ -12,10 +12,13 @@ public class WordPressPosts implements Posts {
     }
 
     public void processAllPosts(final Consumer<Post> onEachPost) {
-        Credential admin = CredentialFactory.createAdmin();
-
-        wordPressAdaptor.getAllPosts(admin, (Post post) -> {
+        wordPressAdaptor.getAllPosts(CredentialFactory.createAdmin(), (Post post) -> {
             onEachPost.accept(post);
         });
+    }
+
+    @Override
+    public void comment(Post post, String comment) {
+        wordPressAdaptor.comment(CredentialFactory.current(), post, comment);
     }
 }

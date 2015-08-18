@@ -8,6 +8,7 @@ When(/^she comments a post "([^"]*)" with comment "([^"]*)"$/) do |post_name, co
 	button(post_name).do_click()
 	container.set frame(post_name)
   	text_field('comment').text = comment
+  	button('post').do_click()
 end
 
 Then(/^other user "([^"]*)" can see this comment$/) do |user_name|

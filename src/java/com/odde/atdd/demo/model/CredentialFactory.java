@@ -14,4 +14,8 @@ public class CredentialFactory {
     public static Credential createAdmin() {
         return new WordPressCredential("odd-e", "s3cr3t", current.getHostSite(), new WordPressAdaptor());
     }
+
+    public static Credential current() {
+        return current;
+    }
 }

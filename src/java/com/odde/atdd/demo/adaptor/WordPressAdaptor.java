@@ -4,6 +4,7 @@ import com.odde.atdd.demo.model.Credential;
 import net.bican.wordpress.Post;
 import net.bican.wordpress.Wordpress;
 import net.bican.wordpress.exceptions.InsufficientRightsException;
+import net.bican.wordpress.exceptions.ObjectNotFoundException;
 import redstone.xmlrpc.XmlRpcFault;
 
 import java.net.MalformedURLException;
@@ -35,11 +36,25 @@ public class WordPressAdaptor {
     public void getAllPosts(Credential credential, final Consumer<com.odde.atdd.demo.model.Post> onEachPost) {
         try {
             for (Post post : wordPressWithCredential(credential).getPosts())
-                onEachPost.accept(new com.odde.atdd.demo.model.Post(post.getPost_title()));
+                onEachPost.accept(new com.odde.atdd.demo.model.Post(post.getPost_title(), post.getPost_id()));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (XmlRpcFault xmlRpcFault) {
             xmlRpcFault.printStackTrace();
+        }
+    }
+
+    public void comment(Credential credential, com.odde.atdd.demo.model.Post post, String comment) {
+        try {
+            wordPressWithCredential(credential).newComment(post.id, 0, comment, null, null, null);
+        } catch (InsufficientRightsException e) {
+            e.printStackTrace();
+        } catch (ObjectNotFoundException e) {
+            e.printStackTrace();
+        } catch (XmlRpcFault xmlRpcFault) {
+            xmlRpcFault.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
     }
 }
