@@ -12,32 +12,14 @@ public class DashboardPage extends JFrame {
         super("Dashboard");
         setSize(new Dimension(640, 480));
 
-        JPanel panel = newContentPanel();
-
-        newLabel(panel, "Dashboard");
+        ContentPanel contentPanel = new ContentPanel(this);
+        contentPanel.newLabel("Dashboard");
 
         posts.processAllPosts((Post post) -> {
-            newButton(panel, post.getTitle());
+            contentPanel.newButton(post.getTitle());
         });
 
         setVisible(true);
-    }
-
-    private void newButton(JPanel panel, String name) {
-        JButton button = new JButton(name);
-        panel.add(button);
-    }
-
-    private JPanel newContentPanel() {
-        JPanel panel = new JPanel();
-        setContentPane(panel);
-        return panel;
-    }
-
-    private JLabel newLabel(JPanel panel, String labelName) {
-        JLabel label = new JLabel(labelName);
-        panel.add(label);
-        return label;
     }
 
 }

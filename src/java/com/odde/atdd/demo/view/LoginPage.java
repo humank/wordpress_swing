@@ -17,59 +17,17 @@ public class LoginPage extends JFrame {
         super("WordPress-Swing");
         setSize(new Dimension(640, 480));
 
-        JPanel panel = newContentPanel();
+        ContentPanel contentPanel = new ContentPanel(this);
 
-        newButton(panel, "login").addActionListener(new LoginActionListener(this));
+        contentPanel.newButton("login").addActionListener(new LoginActionListener(this));
 
-        userName = newTextFieldWithLabel(panel, "user_name", "Please input user name");
+        userName = contentPanel.newTextFieldWithLabel("user_name", "Please input user name");
 
-        password = newPasswordFieldWithLabel(panel, "password", "Please input password");
+        password = contentPanel.newPasswordFieldWithLabel("password", "Please input password");
 
-        hostSite = newTextFieldWithLabel(panel, "host_site", "Please input host site");
+        hostSite = contentPanel.newTextFieldWithLabel("host_site", "Please input host site");
 
         setVisible(true);
-    }
-
-    private JPanel newContentPanel() {
-        JPanel panel = new JPanel();
-        setContentPane(panel);
-        return panel;
-    }
-
-    private JButton newButton(JPanel panel, String name) {
-        JButton login = new JButton(name);
-        panel.add(login);
-        return login;
-    }
-
-    private JPasswordField newPasswordFieldWithLabel(JPanel panel, String labelName, String defaultText) {
-        JPasswordField field = newPassword(panel, defaultText);
-        newLabel(panel, labelName).setLabelFor(field);
-        return field;
-    }
-
-    private JTextField newTextFieldWithLabel(JPanel panel, String labelName, String defaultText) {
-        JTextField textField = newText(panel, defaultText);
-        newLabel(panel, labelName).setLabelFor(textField);
-        return textField;
-    }
-
-    private JPasswordField newPassword(JPanel panel, String defaultText) {
-        JPasswordField password = new JPasswordField(defaultText);
-        panel.add(password);
-        return password;
-    }
-
-    private JLabel newLabel(JPanel panel, String labelName) {
-        JLabel label = new JLabel(labelName);
-        panel.add(label);
-        return label;
-    }
-
-    private JTextField newText(JPanel panel, String defaultText) {
-        JTextField text = new JTextField(defaultText);
-        panel.add(text);
-        return text;
     }
 
     public void showError(String errorMsg) {

@@ -25,11 +25,8 @@ public class WordPressAdaptor {
 
     public void getAllPosts(final Consumer<com.odde.atdd.demo.model.Post> onEachPost) {
         try {
-
-            for (Post post : new Wordpress("odd-e", "s3cr3t", "http://172.28.128.3/xmlrpc.php").getPosts()) {
+            for (Post post : new Wordpress("odd-e", "s3cr3t", "http://172.28.128.3/xmlrpc.php").getPosts())
                 onEachPost.accept(new com.odde.atdd.demo.model.Post(post.getPost_title()));
-            }
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (XmlRpcFault xmlRpcFault) {
