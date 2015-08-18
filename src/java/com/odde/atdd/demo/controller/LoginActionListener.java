@@ -1,7 +1,7 @@
 package com.odde.atdd.demo.controller;
 
 import com.odde.atdd.demo.model.Credential;
-import com.odde.atdd.demo.model.Posts;
+import com.odde.atdd.demo.model.PostsFactory;
 import com.odde.atdd.demo.view.DashboardPage;
 import com.odde.atdd.demo.view.LoginPage;
 
@@ -31,7 +31,7 @@ public class LoginActionListener implements ActionListener {
         }
 
         credential.authenticate(() -> {
-            new DashboardPage(new Posts());
+            new DashboardPage(PostsFactory.create());
         }, () -> {
             this.loginPage.showError("incorrect user name or password");
         });
