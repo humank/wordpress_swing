@@ -16,7 +16,7 @@ public class DashboardPage extends JFrame {
         contentPanel.newLabel("Dashboard");
 
         posts.processAllPosts((Post post) -> {
-            contentPanel.newButton(post.getTitle());
+            contentPanel.newButton(post.title);
         });
 
         setVisible(true);
