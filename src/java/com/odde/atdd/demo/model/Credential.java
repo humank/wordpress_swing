@@ -1,6 +1,6 @@
 package com.odde.atdd.demo.model;
 
-public interface Authentication {
+public interface Credential {
 
     void authenticate(final Runnable onSuccess, final Runnable onFailed);
     String getUserName();

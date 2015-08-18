@@ -2,14 +2,14 @@ package com.odde.atdd.demo.model;
 
 import com.odde.atdd.demo.adaptor.WordPressAdaptor;
 
-public class WordPressAuthentication implements Authentication {
+public class WordPressCredential implements Credential {
 
     private final String userName;
     private final String password;
     private final String hostSite;
     private final WordPressAdaptor wpAdaptor;
 
-    public WordPressAuthentication(String userName, String password, String hostSite, WordPressAdaptor adaptor) {
+    public WordPressCredential(String userName, String password, String hostSite, WordPressAdaptor adaptor) {
         this.userName = userName;
         this.password = password;
         this.hostSite = hostSite;

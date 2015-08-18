@@ -1,8 +1,8 @@
 package com.odde.atdd.demo.view;
 
 import com.odde.atdd.demo.controller.LoginActionListener;
-import com.odde.atdd.demo.model.Authentication;
-import com.odde.atdd.demo.model.AuthenticationFactory;
+import com.odde.atdd.demo.model.Credential;
+import com.odde.atdd.demo.model.CredentialFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -76,7 +76,7 @@ public class LoginPage extends JFrame {
         new JDialog(this, errorMsg).setVisible(true);
     }
 
-    public Authentication getAuthentication() {
-        return AuthenticationFactory.create(userName.getText(), String.valueOf(password.getPassword()), hostSite.getText());
+    public Credential getAuthentication() {
+        return CredentialFactory.create(userName.getText(), String.valueOf(password.getPassword()), hostSite.getText());
     }
 }

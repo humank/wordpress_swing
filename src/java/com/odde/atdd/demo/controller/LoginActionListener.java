@@ -1,6 +1,6 @@
 package com.odde.atdd.demo.controller;
 
-import com.odde.atdd.demo.model.Authentication;
+import com.odde.atdd.demo.model.Credential;
 import com.odde.atdd.demo.view.DashboardPage;
 import com.odde.atdd.demo.view.LoginPage;
 
@@ -17,19 +17,19 @@ public class LoginActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Authentication authentication = this.loginPage.getAuthentication();
+        Credential credential = this.loginPage.getAuthentication();
 
-        if (authentication.getUserName().isEmpty()) {
+        if (credential.getUserName().isEmpty()) {
             this.loginPage.showError("please input user name");
             return;
         }
 
-        if (authentication.getPassword().isEmpty()) {
+        if (credential.getPassword().isEmpty()) {
             this.loginPage.showError("please input password");
             return;
         }
 
-        authentication.authenticate(() -> {
+        credential.authenticate(() -> {
             new DashboardPage();
         }, () -> {
             this.loginPage.showError("incorrect user name or password");
