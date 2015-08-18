@@ -6,7 +6,7 @@ import redstone.xmlrpc.XmlRpcFault;
 
 import java.net.MalformedURLException;
 
-public interface RunnableWithXmlRpcExpections {
+public interface RunnableWithXmlRpcExceptions {
 
     void run() throws InsufficientRightsException, ObjectNotFoundException, XmlRpcFault, MalformedURLException;
 }

@@ -8,4 +8,6 @@ public interface Post {
     Integer getId();
 
     void processAllComments(Consumer<Comment> onEachComment);
+
+    void addComment(String comment);
 }

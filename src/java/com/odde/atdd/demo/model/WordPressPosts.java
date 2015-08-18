@@ -17,8 +17,4 @@ public class WordPressPosts implements Posts {
         });
     }
 
-    @Override
-    public void comment(Post post, String comment) {
-        wordPressAdaptor.comment(CredentialFactory.current(), post, comment);
-    }
 }

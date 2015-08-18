@@ -1,7 +1,6 @@
 package com.odde.atdd.demo.controller;
 
 import com.odde.atdd.demo.model.Post;
-import com.odde.atdd.demo.model.PostsFactory;
 import com.odde.atdd.demo.view.PostPage;
 
 import java.awt.event.ActionEvent;
@@ -18,6 +17,6 @@ public class CommentActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        PostsFactory.create().comment(post, postPage.getComment());
+        post.addComment(postPage.getComment());
     }
 }

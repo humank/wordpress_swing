@@ -3,7 +3,7 @@ package com.odde.atdd.demo.model;
 import com.odde.atdd.demo.adaptor.WordPressAdaptor;
 
 public class PostsFactory {
-    public static Posts create() {
+    public static Posts createPosts() {
         return new WordPressPosts(new WordPressAdaptor());
     }
 

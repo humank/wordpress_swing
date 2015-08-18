@@ -27,7 +27,7 @@ public class WordPressAdaptor {
         }
     }
 
-    private void try_and_output_any_unexpected_exceptions(final RunnableWithXmlRpcExpections runnable) {
+    private void try_and_output_any_unexpected_exceptions(final RunnableWithXmlRpcExceptions runnable) {
         try {
             runnable.run();
         } catch (InsufficientRightsException e) {

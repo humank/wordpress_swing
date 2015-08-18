@@ -32,4 +32,9 @@ public class WordPressPost implements Post {
     public void processAllComments(Consumer<Comment> onEachComment) {
         wordPressAdaptor.getAllComments(CredentialFactory.createAdmin(), this, onEachComment);
     }
+
+    @Override
+    public void addComment(String comment) {
+        wordPressAdaptor.comment(CredentialFactory.current(), this, comment);
+    }
 }
