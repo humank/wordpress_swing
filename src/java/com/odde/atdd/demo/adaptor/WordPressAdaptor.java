@@ -2,8 +2,6 @@ package com.odde.atdd.demo.adaptor;
 
 import com.odde.atdd.demo.model.Credential;
 import com.odde.atdd.demo.model.PostsFactory;
-import net.bican.wordpress.Comment;
-import net.bican.wordpress.Post;
 import net.bican.wordpress.Wordpress;
 import net.bican.wordpress.exceptions.InsufficientRightsException;
 import net.bican.wordpress.exceptions.ObjectNotFoundException;
@@ -50,20 +48,21 @@ public class WordPressAdaptor {
     }
 
     public void getAllPosts(Credential credential, final Consumer<com.odde.atdd.demo.model.Post> onEachPost) {
-        try_and_output_any_unexpected_exceptions(() -> {
-            for (Post post : wordPressWithCredential(credential).getPosts())
-                onEachPost.accept(PostsFactory.createPost(post.getPost_title(), post.getPost_id(), post.getPost_content()));
-        });
+        try_and_output_any_unexpected_exceptions(() ->
+                wordPressWithCredential(credential).getPosts().stream().
+                        forEach(post ->
+                                onEachPost.accept(PostsFactory.createPost(post.getPost_title(), post.getPost_id(), post.getPost_content()))));
     }
 
     public void comment(Credential credential, com.odde.atdd.demo.model.Post post, String comment) {
-        try_and_output_any_unexpected_exceptions(() -> wordPressWithCredential(credential).newComment(post.getId(), 0, comment, null, null, null));
+        try_and_output_any_unexpected_exceptions(() ->
+                wordPressWithCredential(credential).newComment(post.getId(), 0, comment, null, null, null));
     }
 
     public void getAllComments(Credential credential, com.odde.atdd.demo.model.Post post, Consumer<com.odde.atdd.demo.model.Comment> onEachComment) {
-        try_and_output_any_unexpected_exceptions(() -> {
-            for (Comment comment : wordPressWithCredential(credential).getComments("all", post.getId(), 0, 0))
-                onEachComment.accept(new com.odde.atdd.demo.model.Comment(comment.getContent()));
-        });
+        try_and_output_any_unexpected_exceptions(() ->
+                wordPressWithCredential(credential).getComments("all", post.getId(), 0, 0).stream().
+                        forEach(comment ->
+                                onEachComment.accept(new com.odde.atdd.demo.model.Comment(comment.getContent()))));
     }
 }
