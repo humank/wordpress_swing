@@ -17,7 +17,7 @@ public class PostPage extends JDialog {
 
         ContentPanel contentPanel = new ContentPanel(this);
 
-        contentPanel.newLabel("blog content");
+        contentPanel.newMainContent("<html>" + post.getContent() + "</html>");
         contentPanel.newLabel("----------------------------------");
         contentPanel.newLabel("Comments from others: ");
 

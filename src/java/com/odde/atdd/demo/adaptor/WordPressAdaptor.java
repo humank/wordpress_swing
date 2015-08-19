@@ -52,7 +52,7 @@ public class WordPressAdaptor {
     public void getAllPosts(Credential credential, final Consumer<com.odde.atdd.demo.model.Post> onEachPost) {
         try_and_output_any_unexpected_exceptions(() -> {
             for (Post post : wordPressWithCredential(credential).getPosts())
-                onEachPost.accept(PostsFactory.createPost(post.getPost_title(), post.getPost_id()));
+                onEachPost.accept(PostsFactory.createPost(post.getPost_title(), post.getPost_id(), post.getPost_content()));
         });
     }
 

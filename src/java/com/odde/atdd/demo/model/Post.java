@@ -10,4 +10,6 @@ public interface Post {
     void processAllComments(Consumer<Comment> onEachComment);
 
     void addComment(String comment);
+
+    String getContent();
 }

@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 public class WordPressPost implements Post {
 
     private final WordPressAdaptor wordPressAdaptor;
+    private final String content;
 
     @Override
     public String getTitle() {
@@ -22,10 +23,11 @@ public class WordPressPost implements Post {
 
     private final Integer id;
 
-    public WordPressPost(String title, Integer id, WordPressAdaptor wordPressAdaptor) {
+    public WordPressPost(String title, Integer id, WordPressAdaptor wordPressAdaptor, String content) {
         this.title = title;
         this.id = id;
         this.wordPressAdaptor = wordPressAdaptor;
+        this.content = content;
     }
 
     @Override
@@ -36,5 +38,10 @@ public class WordPressPost implements Post {
     @Override
     public void addComment(String comment) {
         wordPressAdaptor.comment(CredentialFactory.current(), this, comment);
+    }
+
+    @Override
+    public String getContent() {
+        return content;
     }
 }

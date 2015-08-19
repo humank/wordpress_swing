@@ -9,6 +9,7 @@ public class ContentPanel {
     private final JPanel labelPanel;
     private final JPanel fieldPanel;
     private final JPanel buttonPanel;
+    private final JPanel mainPanel;
     private int labelCount;
     private int buttonCount;
     private int fieldCount;
@@ -17,10 +18,12 @@ public class ContentPanel {
         panel = new JPanel(new BorderLayout());
         dialog.setContentPane(panel);
 
+        mainPanel = new JPanel();
         labelPanel = new JPanel();
         fieldPanel = new JPanel();
         buttonPanel = new JPanel();
 
+        panel.add(mainPanel, BorderLayout.NORTH);
         panel.add(labelPanel, BorderLayout.WEST);
         panel.add(fieldPanel, BorderLayout.CENTER);
         panel.add(buttonPanel, BorderLayout.SOUTH);
@@ -74,4 +77,8 @@ public class ContentPanel {
         return text;
     }
 
+    public void newMainContent(String text) {
+        mainPanel.add(new JLabel(text));
+        mainPanel.setLayout(new GridLayout(1, 1));
+    }
 }
