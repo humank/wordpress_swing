@@ -17,6 +17,7 @@ public class LoginPage extends JDialog {
     public LoginPage(Window owner) {
         super(owner);
         setTitle("Sign in");
+        setLocationRelativeTo(null);
 
         ContentPanel contentPanel = new ContentPanel(this);
 
@@ -33,7 +34,12 @@ public class LoginPage extends JDialog {
     }
 
     public void showError(String errorMsg) {
-        new JDialog(this, errorMsg).setVisible(true);
+        JDialog dialog = new JDialog(this, "Error");
+        ContentPanel contentPanel = new ContentPanel(dialog);
+        contentPanel.newLabel(errorMsg);
+        dialog.setLocationRelativeTo(this);
+        dialog.pack();
+        dialog.setVisible(true);
     }
 
     public Credential getCredential() {

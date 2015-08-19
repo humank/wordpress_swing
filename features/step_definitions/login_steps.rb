@@ -15,5 +15,6 @@ Then(/^login successfully$/) do
 end
 
 Then(/^login failed with error "([^"]*)"$/) do |error_message|
-	expect(dialog(error_message).visible?).to eq(true)
+	container.set dialog("Error")
+	expect(label(error_message).visible?).to eq(true)
 end
