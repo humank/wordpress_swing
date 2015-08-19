@@ -7,5 +7,5 @@ When t(/^I click the toolbar button "([^\"]*)"$/) do |button|
 end
 
 Then t(/^the toolbar button "([^\"]*)" should be selected$/) do |button|
-  togglebutton(button).selected?.should be_true
+  togglebutton(button).selected?.should be_truthy
 end

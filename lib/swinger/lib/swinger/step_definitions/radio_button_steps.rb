@@ -7,5 +7,5 @@ When t(/^I click the radio button "([^\"]*)"$/) do |name|
 end
 
 Then t(/^the radio button "([^\"]*)" should (not )*be selected$/) do |name, negation|
-  radio_button(name).selected?.should((negation ? be_false : be_true))
+  radio_button(name).selected?.should((negation ? be_falsey : be_truthy))
 end

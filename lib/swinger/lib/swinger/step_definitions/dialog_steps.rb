@@ -12,7 +12,7 @@ Then t(/^I should (not )*see the dialog "([^\"]*)"$/) do |negation, name|
       dialog(name)
     end
   else
-    dialog(name).visible?.should be_true
+    dialog(name).visible?.should be_truthy
   end
 end
 

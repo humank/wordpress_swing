@@ -15,7 +15,7 @@ end
 Then t(/^the (internal )*frame "([^\"]*)" should be active$/) do |internal, name|
   frame_operator = frame(name, internal)
   method = internal ? :selected : :active
-  frame_operator.send("#{method}?").should be_true
+  frame_operator.send("#{method}?").should be_truthy
 end 
 
 Then t(/^I should (not )*see the (internal )*frame "([^\"]*)"$/) do |negation, internal, name|
@@ -25,7 +25,7 @@ Then t(/^I should (not )*see the (internal )*frame "([^\"]*)"$/) do |negation, i
       frame(name, internal)
     end
   else
-    frame(name, internal).visible?.should be_true
+    frame(name, internal).visible?.should be_truthy
   end
 end
 

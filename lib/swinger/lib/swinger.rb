@@ -3,8 +3,8 @@ $LOAD_PATH << SWINGER_ROOT
 
 require 'java'
 require 'cucumber'
-require 'spec'
-# require 'spec/matchers'
+require 'rspec'
+require 'rspec/matchers'
 
 require 'swinger/jemmy.jar'
 require 'swinger/i18n'

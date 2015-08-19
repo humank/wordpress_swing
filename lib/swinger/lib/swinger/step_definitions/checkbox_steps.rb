@@ -3,5 +3,5 @@ When t(/^I click the checkbox "([^\"]*)"$/) do |name|
 end
 
 Then t(/^the checkbox "([^\"]*)" should (not )*be selected$/) do |name, negation|
-  checkbox(name).selected?.should((negation ? be_false : be_true))
+  checkbox(name).selected?.should((negation ? be_falsey : be_truthy))
 end
