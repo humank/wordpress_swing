@@ -1,25 +1,37 @@
 package com.odde.atdd.demo.view;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ContentPanel {
 
     private final JPanel panel;
+    private final JPanel labelPanel;
+    private final JPanel fieldPanel;
+    private final JPanel buttonPanel;
 
     public ContentPanel(JDialog dialog) {
-        this.panel = new JPanel();
+        panel = new JPanel(new BorderLayout());
         dialog.setContentPane(panel);
+
+        labelPanel = new JPanel(new GridLayout(4, 1));
+        fieldPanel = new JPanel(new GridLayout(4, 1));
+        buttonPanel = new JPanel(new GridLayout(1, 1));
+
+        panel.add(labelPanel, BorderLayout.WEST);
+        panel.add(fieldPanel, BorderLayout.CENTER);
+        panel.add(buttonPanel, BorderLayout.SOUTH);
     }
 
     public JLabel newLabel(String name) {
         JLabel label = new JLabel(name);
-        panel.add(label);
+        labelPanel.add(label);
         return label;
     }
 
     public JButton newButton(String name) {
         JButton button = new JButton(name);
-        panel.add(button);
+        buttonPanel.add(button);
         return button;
     }
 
@@ -37,13 +49,13 @@ public class ContentPanel {
 
     private JPasswordField newPassword(String defaultText) {
         JPasswordField password = new JPasswordField(defaultText);
-        panel.add(password);
+        fieldPanel.add(password);
         return password;
     }
 
     private JTextField newText(String defaultText) {
         JTextField text = new JTextField(defaultText);
-        panel.add(text);
+        fieldPanel.add(text);
         return text;
     }
 

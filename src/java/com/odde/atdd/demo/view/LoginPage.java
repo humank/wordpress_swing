@@ -17,18 +17,18 @@ public class LoginPage extends JDialog {
     public LoginPage(Window owner) {
         super(owner);
         setTitle("Sign in");
-        setSize(new Dimension(640, 480));
 
         ContentPanel contentPanel = new ContentPanel(this);
 
         contentPanel.newButton("login").addActionListener(new LoginActionListener(this));
 
-        userName = contentPanel.newTextFieldWithLabel("user_name", "Please input user name");
+        userName = contentPanel.newTextFieldWithLabel("User Name: ", "Please input user name");
 
-        password = contentPanel.newPasswordFieldWithLabel("password", "Please input password");
+        password = contentPanel.newPasswordFieldWithLabel("Password: ", "Please input password");
 
-    hostSite = contentPanel.newTextFieldWithLabel("host_site", DEFAULT_HOST_SITE);
+        hostSite = contentPanel.newTextFieldWithLabel("WordPress Site: ", DEFAULT_HOST_SITE);
 
+        pack();
         setVisible(true);
     }
 

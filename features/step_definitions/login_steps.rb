@@ -4,9 +4,9 @@ end
 When(/^login with user name "(.*?)" and password "(.*?)"$/) do |user_name, password|
 	timeout('DialogWaiter.WaitDialogTimeout',1000)
   	container.set page_dialog('Sign in')
-  	text_field('user_name').text = user_name
-  	password_field('password').text = password
-  	text_field('host_site').text = 'http://odd-pi.local'
+  	text_field('User Name: ').text = user_name
+  	password_field('Password: ').text = password
+  	text_field('WordPress Site: ').text = 'http://odd-pi.local'
 	button("login").do_click()
 end
 
