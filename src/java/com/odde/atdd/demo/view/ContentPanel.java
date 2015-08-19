@@ -30,7 +30,15 @@ public class ContentPanel {
         JLabel label = new JLabel(name);
         labelPanel.add(label);
         labelPanel.setLayout(new GridLayout(++labelCount, 1));
+        addLabelToFieldPanelForBalance();
         return label;
+    }
+
+    private void addLabelToFieldPanelForBalance() {
+        if (fieldCount == labelCount - 1) {
+            fieldPanel.add(new Label());
+            fieldPanel.setLayout(new GridLayout(++fieldCount, 1));
+        }
     }
 
     public JButton newButton(String name) {
