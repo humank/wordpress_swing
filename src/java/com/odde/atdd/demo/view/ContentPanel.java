@@ -9,14 +9,17 @@ public class ContentPanel {
     private final JPanel labelPanel;
     private final JPanel fieldPanel;
     private final JPanel buttonPanel;
+    private int labelCount;
+    private int buttonCount;
+    private int fieldCount;
 
     public ContentPanel(JDialog dialog) {
         panel = new JPanel(new BorderLayout());
         dialog.setContentPane(panel);
 
-        labelPanel = new JPanel(new GridLayout(4, 1));
-        fieldPanel = new JPanel(new GridLayout(4, 1));
-        buttonPanel = new JPanel(new GridLayout(1, 1));
+        labelPanel = new JPanel();
+        fieldPanel = new JPanel();
+        buttonPanel = new JPanel();
 
         panel.add(labelPanel, BorderLayout.WEST);
         panel.add(fieldPanel, BorderLayout.CENTER);
@@ -26,12 +29,14 @@ public class ContentPanel {
     public JLabel newLabel(String name) {
         JLabel label = new JLabel(name);
         labelPanel.add(label);
+        labelPanel.setLayout(new GridLayout(++labelCount, 1));
         return label;
     }
 
     public JButton newButton(String name) {
         JButton button = new JButton(name);
         buttonPanel.add(button);
+        buttonPanel.setLayout(new GridLayout(++buttonCount, 1));
         return button;
     }
 
@@ -50,12 +55,14 @@ public class ContentPanel {
     private JPasswordField newPassword(String defaultText) {
         JPasswordField password = new JPasswordField(defaultText);
         fieldPanel.add(password);
+        fieldPanel.setLayout(new GridLayout(++fieldCount, 1));
         return password;
     }
 
     private JTextField newText(String defaultText) {
         JTextField text = new JTextField(defaultText);
         fieldPanel.add(text);
+        fieldPanel.setLayout(new GridLayout(++fieldCount, 1));
         return text;
     }
 
