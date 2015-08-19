@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class LoginPage extends JDialog {
 
+    private static final String DEFAULT_HOST_SITE = "http://odd-pi.local";
     private final JPasswordField password;
     private final JTextField userName;
     private final JTextField hostSite;
@@ -26,7 +27,7 @@ public class LoginPage extends JDialog {
 
         password = contentPanel.newPasswordFieldWithLabel("password", "Please input password");
 
-        hostSite = contentPanel.newTextFieldWithLabel("host_site", "Please input host site");
+    hostSite = contentPanel.newTextFieldWithLabel("host_site", DEFAULT_HOST_SITE);
 
         setVisible(true);
     }
