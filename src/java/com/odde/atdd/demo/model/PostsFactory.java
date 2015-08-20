@@ -8,6 +8,9 @@ public class PostsFactory {
     }
 
     public static Post createPost(String title, Integer id, String content, boolean isAllowedToComment) {
-        return new WordPressPost(title, id, new WordPressAdaptor(), content, isAllowedToComment);
+        if (isAllowedToComment)
+            return new WordPressPostWithCommentOpen(title, id, new WordPressAdaptor(), content);
+        else
+            return new WordPressPostWithCommentClosed(title, id, new WordPressAdaptor(), content);
     }
 }
