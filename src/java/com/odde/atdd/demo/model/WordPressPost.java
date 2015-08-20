@@ -8,6 +8,7 @@ public class WordPressPost implements Post {
 
     private final WordPressAdaptor wordPressAdaptor;
     private final String content;
+    private final boolean isAllowedToComment;
 
     @Override
     public String getTitle() {
@@ -23,11 +24,12 @@ public class WordPressPost implements Post {
 
     private final Integer id;
 
-    public WordPressPost(String title, Integer id, WordPressAdaptor wordPressAdaptor, String content) {
+    public WordPressPost(String title, Integer id, WordPressAdaptor wordPressAdaptor, String content, boolean isAllowedToComment) {
         this.title = title;
         this.id = id;
         this.wordPressAdaptor = wordPressAdaptor;
         this.content = content;
+        this.isAllowedToComment = isAllowedToComment;
     }
 
     @Override
@@ -43,5 +45,13 @@ public class WordPressPost implements Post {
     @Override
     public String getContent() {
         return content;
+    }
+
+    @Override
+    public void allowToComment(Runnable yes, Runnable no) {
+        if (isAllowedToComment)
+            yes.run();
+        else
+            no.run();
     }
 }

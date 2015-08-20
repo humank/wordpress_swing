@@ -12,4 +12,6 @@ public interface Post {
     void addComment(String comment);
 
     String getContent();
+
+    void allowToComment(Runnable yes, Runnable no);
 }

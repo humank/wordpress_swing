@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class PostPage extends JDialog {
 
-    private final JTextField comment;
+    private JTextField comment;
 
     public PostPage(Window owner, Post post) {
         super(owner);
@@ -24,9 +24,15 @@ public class PostPage extends JDialog {
         post.processAllComments(comment -> contentPanel.newLabel(comment.content));
 
         contentPanel.newLabel("----------------------------------");
-        comment = contentPanel.newTextFieldWithLabel("Your comment: ", "Please add your comment");
 
-        contentPanel.newButton("post").addActionListener(new CommentActionListener(this, post));
+        post.allowToComment(() -> {
+            comment = contentPanel.newTextFieldWithLabel("Your comment: ", "Please add your comment");
+            contentPanel.newButton("post").addActionListener(new CommentActionListener(this, post));
+        }, () -> {
+            comment = contentPanel.newTextFieldWithLabel("Comments are closed.", "");
+            comment.setVisible(false);
+        });
+
 
         pack();
         setVisible(true);
