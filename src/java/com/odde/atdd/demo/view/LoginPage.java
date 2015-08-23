@@ -17,7 +17,6 @@ public class LoginPage extends JDialog {
     public LoginPage(Window owner) {
         super(owner);
         setTitle("Sign in");
-        setLocationRelativeTo(null);
 
         ContentPanel contentPanel = new ContentPanel(this);
 
@@ -29,6 +28,7 @@ public class LoginPage extends JDialog {
 
         hostSite = contentPanel.newTextFieldWithLabel("WordPress Site: ", DEFAULT_HOST_SITE);
 
+        setLocationRelativeTo(owner);
         pack();
         setVisible(true);
     }

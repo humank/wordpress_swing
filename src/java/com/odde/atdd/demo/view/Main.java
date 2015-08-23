@@ -12,6 +12,7 @@ public class Main {
                 new JFrame("WordPress-Swing") {{
                     setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                     setLocationRelativeTo(null);
+                    pack();
                     setVisible(true);
                     new LoginPage(this);
                 }};

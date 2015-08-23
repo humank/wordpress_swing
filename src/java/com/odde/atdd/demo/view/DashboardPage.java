@@ -11,7 +11,6 @@ public class DashboardPage extends JDialog {
     public DashboardPage(Window owner, Posts posts) {
         super(owner);
         setTitle("Dashboard");
-        setLocationRelativeTo(owner);
 
         ContentPanel contentPanel = new ContentPanel(this);
 
@@ -19,6 +18,7 @@ public class DashboardPage extends JDialog {
                 contentPanel.newButton(post.getTitle())
                     .addActionListener(new PostActionListener(this, post)));
 
+        setLocationRelativeTo(owner);
         pack();
         setVisible(true);
     }

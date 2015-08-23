@@ -13,7 +13,6 @@ public class PostPage extends JDialog {
     public PostPage(Window owner, Post post) {
         super(owner);
         setTitle(post.getTitle());
-        setLocationRelativeTo(owner);
 
         ContentPanel contentPanel = new ContentPanel(this);
 
@@ -33,7 +32,7 @@ public class PostPage extends JDialog {
             comment.setVisible(false);
         });
 
-
+        setLocationRelativeTo(owner);
         pack();
         setVisible(true);
     }
