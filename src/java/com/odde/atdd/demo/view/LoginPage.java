@@ -31,12 +31,7 @@ public class LoginPage extends JDialog implements Screen {
     }
 
     public void showError(String errorMsg) {
-        JDialog dialog = new JDialog(this, "Error");
-        TwoColumnsBalancedPanel contentPanel = new TwoColumnsBalancedPanel(dialog);
-        contentPanel.newLabel(errorMsg);
-        dialog.setLocationRelativeTo(this);
-        dialog.pack();
-        dialog.setVisible(true);
+        new ErrorDialog(this, errorMsg);
     }
 
     public Credential getCredential() {
