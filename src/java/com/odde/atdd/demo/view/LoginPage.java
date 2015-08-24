@@ -7,7 +7,7 @@ import com.odde.atdd.demo.model.CredentialFactory;
 import javax.swing.*;
 import java.awt.*;
 
-public class LoginPage extends JDialog {
+public class LoginPage extends JDialog implements Screen {
 
     private static final String DEFAULT_HOST_SITE = "http://odd-pi.local";
     private final JPasswordField password;
@@ -16,7 +16,6 @@ public class LoginPage extends JDialog {
 
     public LoginPage(Window owner) {
         super(owner);
-        setTitle("Sign in");
 
         ContentPanel contentPanel = new ContentPanel(this);
 
@@ -28,9 +27,7 @@ public class LoginPage extends JDialog {
 
         hostSite = contentPanel.newTextFieldWithLabel("WordPress Site: ", DEFAULT_HOST_SITE);
 
-        setLocationRelativeTo(owner);
-        pack();
-        setVisible(true);
+        display(this, "Sign in", owner);
     }
 
     public void showError(String errorMsg) {

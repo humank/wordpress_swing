@@ -6,11 +6,10 @@ import com.odde.atdd.demo.model.Posts;
 import javax.swing.*;
 import java.awt.*;
 
-public class DashboardPage extends JDialog {
+public class DashboardPage extends JDialog implements Screen {
 
     public DashboardPage(Window owner, Posts posts) {
         super(owner);
-        setTitle("Dashboard");
 
         ContentPanel contentPanel = new ContentPanel(this);
 
@@ -18,9 +17,7 @@ public class DashboardPage extends JDialog {
                 contentPanel.newButton(post.getTitle())
                     .addActionListener(new PostActionListener(this, post)));
 
-        setLocationRelativeTo(owner);
-        pack();
-        setVisible(true);
+        display(this, "Dashboard", owner);
     }
 
 }

@@ -6,13 +6,12 @@ import com.odde.atdd.demo.model.Post;
 import javax.swing.*;
 import java.awt.*;
 
-public class PostPage extends JDialog {
+public class PostPage extends JDialog implements Screen {
 
     private JTextField comment;
 
     public PostPage(Window owner, Post post) {
         super(owner);
-        setTitle(post.getTitle());
 
         ContentPanel contentPanel = new ContentPanel(this);
 
@@ -32,9 +31,7 @@ public class PostPage extends JDialog {
             comment.setVisible(false);
         });
 
-        setLocationRelativeTo(owner);
-        pack();
-        setVisible(true);
+        display(this, post.getTitle(), owner);
     }
 
     public String getComment() {
