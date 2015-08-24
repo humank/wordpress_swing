@@ -3,5 +3,5 @@ package com.odde.atdd.demo.model;
 import java.util.function.Consumer;
 
 public interface Posts {
-    void processAllPosts(Consumer<Post> onEachPost);
+    void letEachPost(Consumer<Post> onEachPost);
 }

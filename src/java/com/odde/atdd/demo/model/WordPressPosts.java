@@ -11,8 +11,8 @@ public class WordPressPosts implements Posts {
         this.wordPressAdaptor = wordPressAdaptor;
     }
 
-    public void processAllPosts(final Consumer<Post> onEachPost) {
-        wordPressAdaptor.getAllPosts(CredentialFactory.createAdmin(), post -> onEachPost.accept(post));
+    public void letEachPost(final Consumer<Post> onEachPost) {
+        wordPressAdaptor.letEachPost(CredentialFactory.createAdmin(), post -> onEachPost.accept(post));
     }
 
 }

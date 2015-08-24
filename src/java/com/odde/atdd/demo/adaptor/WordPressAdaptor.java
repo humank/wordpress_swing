@@ -47,24 +47,23 @@ public class WordPressAdaptor {
         return credential.getHostSite() + "/xmlrpc.php";
     }
 
-    public void getAllPosts(Credential credential, final Consumer<com.odde.atdd.demo.model.Post> onEachPost) {
+    public void letEachPost(Credential credential, final Consumer<com.odde.atdd.demo.model.Post> onEachPost) {
         try_and_output_any_unexpected_exceptions(() ->
                 wordPressWithCredential(credential).getPosts().stream().
-                        forEach(post -> {
-                            onEachPost.accept(PostsFactory.createPost(post.getPost_title(), post.getPost_id(), post.getPost_content(),
-                                    !post.getComment_status().equals("closed")));
-                        }));
+                        forEach(post -> onEachPost.accept(PostsFactory.createPost(
+                                post.getPost_title(), post.getPost_id(),
+                                post.getPost_content(), !post.getComment_status().equals("closed")))));
     }
 
     public void comment(Credential credential, com.odde.atdd.demo.model.Post post, String comment) {
         try_and_output_any_unexpected_exceptions(() ->
-                wordPressWithCredential(credential).newComment(post.getId(), 0, comment, null, null, null));
+                wordPressWithCredential(credential).
+                        newComment(post.getId(), 0, comment, null, null, null));
     }
 
-    public void getAllComments(Credential credential, com.odde.atdd.demo.model.Post post, Consumer<com.odde.atdd.demo.model.Comment> onEachComment) {
+    public void letEachComment(Credential credential, com.odde.atdd.demo.model.Post post, Consumer<com.odde.atdd.demo.model.Comment> onEachComment) {
         try_and_output_any_unexpected_exceptions(() ->
                 wordPressWithCredential(credential).getComments("all", post.getId(), 0, 0).stream().
-                        forEach(comment ->
-                                onEachComment.accept(new com.odde.atdd.demo.model.Comment(comment.getContent()))));
+                        forEach(comment -> onEachComment.accept(new com.odde.atdd.demo.model.Comment(comment.getContent()))));
     }
 }
