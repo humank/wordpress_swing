@@ -9,7 +9,7 @@ public class WordPressPostWithCommentClosed extends WordPressPost {
     }
 
     @Override
-    public void allowToComment(Runnable yes, Runnable no) {
+    public void allowToCommentOrNot(Runnable yes, Runnable no) {
         no.run();
     }
 }

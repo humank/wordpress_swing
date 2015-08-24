@@ -31,7 +31,7 @@ public abstract class WordPressPost implements Post {
     }
 
     @Override
-    public void processAllComments(Consumer<Comment> onEachComment) {
+    public void letEachComment(Consumer<Comment> onEachComment) {
         wordPressAdaptor.letEachComment(CredentialFactory.createAdmin(), this, onEachComment);
     }
 

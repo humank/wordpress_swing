@@ -7,11 +7,11 @@ public interface Post {
 
     Integer getId();
 
-    void processAllComments(Consumer<Comment> onEachComment);
+    void letEachComment(Consumer<Comment> onEachComment);
 
     void addComment(String comment);
 
     String getContent();
 
-    void allowToComment(Runnable yes, Runnable no);
+    void allowToCommentOrNot(Runnable yes, Runnable no);
 }

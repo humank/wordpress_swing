@@ -19,19 +19,29 @@ public class PostPage extends JDialog implements Screen {
         contentPanel.newLabel("----------------------------------");
         contentPanel.newLabel("Comments from others: ");
 
-        post.processAllComments(comment -> contentPanel.newLabel(comment.content));
+        post.letEachComment(comment -> contentPanel.newLabel(comment.content));
 
         contentPanel.newLabel("----------------------------------");
 
-        post.allowToComment(() -> {
-            comment = contentPanel.newTextFieldWithLabel("Your comment: ", "Please add your comment");
-            contentPanel.newButton("post").addActionListener(new CommentActionListener(this, post));
-        }, () -> {
-            comment = contentPanel.newTextFieldWithLabel("Comments are closed.", "");
-            comment.setVisible(false);
-        });
+        post.allowToCommentOrNot(
+                () -> addSubmittableComment(post, contentPanel),
+                () -> disableCommentFunctionality(contentPanel));
 
         display(this, post.getTitle(), owner);
+    }
+
+    private void disableCommentFunctionality(TwoColumnsBalancedPanel contentPanel) {
+        comment = contentPanel.newTextFieldWithLabel("Comments are closed.", "");
+        comment.setVisible(false);
+    }
+
+    private void addSubmittableComment(Post post, TwoColumnsBalancedPanel contentPanel) {
+        comment = contentPanel.newTextFieldWithLabel("Your comment: ", "Please add your comment");
+        addSubmitButton(post, contentPanel);
+    }
+
+    private void addSubmitButton(Post post, TwoColumnsBalancedPanel contentPanel) {
+        contentPanel.newButton("post").addActionListener(new CommentActionListener(this, post));
     }
 
     public String getComment() {
