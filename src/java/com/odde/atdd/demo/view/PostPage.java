@@ -13,7 +13,7 @@ public class PostPage extends JDialog implements Screen {
     public PostPage(Window owner, Post post) {
         super(owner);
 
-        ContentPanel contentPanel = new ContentPanel(this);
+        TwoColumnsBalancedPanel contentPanel = new TwoColumnsBalancedPanel(this);
 
         contentPanel.newMainContent("<html>" + post.getContent() + "</html>");
         contentPanel.newLabel("----------------------------------");

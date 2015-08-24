@@ -3,7 +3,7 @@ package com.odde.atdd.demo.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class ContentPanel {
+public class TwoColumnsBalancedPanel {
 
     private final JPanel panel;
     private final JPanel labelPanel;
@@ -14,7 +14,7 @@ public class ContentPanel {
     private int buttonCount;
     private int fieldCount;
 
-    public ContentPanel(JDialog dialog) {
+    public TwoColumnsBalancedPanel(JDialog dialog) {
         panel = new JPanel(new BorderLayout());
         dialog.setContentPane(panel);
 

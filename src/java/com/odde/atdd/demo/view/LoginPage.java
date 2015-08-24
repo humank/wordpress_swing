@@ -17,7 +17,7 @@ public class LoginPage extends JDialog implements Screen {
     public LoginPage(Window owner) {
         super(owner);
 
-        ContentPanel contentPanel = new ContentPanel(this);
+        TwoColumnsBalancedPanel contentPanel = new TwoColumnsBalancedPanel(this);
 
         contentPanel.newButton("login").addActionListener(new LoginActionListener(this));
 
@@ -32,7 +32,7 @@ public class LoginPage extends JDialog implements Screen {
 
     public void showError(String errorMsg) {
         JDialog dialog = new JDialog(this, "Error");
-        ContentPanel contentPanel = new ContentPanel(dialog);
+        TwoColumnsBalancedPanel contentPanel = new TwoColumnsBalancedPanel(dialog);
         contentPanel.newLabel(errorMsg);
         dialog.setLocationRelativeTo(this);
         dialog.pack();

@@ -11,7 +11,7 @@ public class DashboardPage extends JDialog implements Screen {
     public DashboardPage(Window owner, Posts posts) {
         super(owner);
 
-        ContentPanel contentPanel = new ContentPanel(this);
+        TwoColumnsBalancedPanel contentPanel = new TwoColumnsBalancedPanel(this);
 
         posts.processAllPosts(post ->
                 contentPanel.newButton(post.getTitle())
