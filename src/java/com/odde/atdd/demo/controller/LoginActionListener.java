@@ -30,9 +30,13 @@ public class LoginActionListener implements ActionListener {
             return;
         }
 
-        credential.authenticate(() -> {
-            new DashboardPage(this.loginPage.getOwner(), PostsFactory.createPosts());
-            this.loginPage.dispose();
-        }, () -> this.loginPage.showError("incorrect user name or password"));
+        credential.authenticate(
+                () -> gotoDashboardPage(),
+                () -> this.loginPage.showError("incorrect user name or password"));
+    }
+
+    private void gotoDashboardPage() {
+        new DashboardPage(this.loginPage.getOwner(), PostsFactory.createPosts());
+        this.loginPage.dispose();
     }
 }

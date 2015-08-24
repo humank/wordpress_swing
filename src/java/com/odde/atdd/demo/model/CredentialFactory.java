@@ -4,6 +4,8 @@ import com.odde.atdd.demo.adaptor.WordPressAdaptor;
 
 public class CredentialFactory {
 
+    private static final String ADMIN_USER_NAME = "odd-e";
+    private static final String ADMIN_PASSWORD = "s3cr3t";
     private static Credential current;
 
     public static Credential create(String userName, String password, String hostSite) {
@@ -12,7 +14,7 @@ public class CredentialFactory {
     }
 
     public static Credential createAdmin() {
-        return new WordPressCredential("odd-e", "s3cr3t", current.getHostSite(), new WordPressAdaptor());
+        return new WordPressCredential(ADMIN_USER_NAME, ADMIN_PASSWORD, current.getHostSite(), new WordPressAdaptor());
     }
 
     public static Credential current() {
