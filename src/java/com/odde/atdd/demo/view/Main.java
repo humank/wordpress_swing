@@ -2,22 +2,21 @@ package com.odde.atdd.demo.view;
 
 import javax.swing.*;
 
-public class Main {
+public class Main extends JFrame implements Screen {
+
+    public Main() {
+        super();
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+        display(this, "WordPress-Swing", null);
+
+        new LoginPage(this);
+    }
+
 
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new JFrame("WordPress-Swing") {{
-                    setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                    setLocationRelativeTo(null);
-                    pack();
-                    setVisible(true);
-                    new LoginPage(this);
-                }};
-            }
-        });
+        SwingUtilities.invokeLater(() -> new Main());
 
     }
 

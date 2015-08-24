@@ -7,8 +7,17 @@ public interface Screen {
 
     default void display(JDialog dialog, String title, Window owner) {
         dialog.setTitle(title);
-        dialog.setLocationRelativeTo(owner);
-        dialog.pack();
-        dialog.setVisible(true);
+        displayRelatively(dialog, owner);
+    }
+
+    default void displayRelatively(Window self, Window owner) {
+        self.setLocationRelativeTo(owner);
+        self.pack();
+        self.setVisible(true);
+    }
+
+    default void display(JFrame frame, String title, Window owner) {
+        frame.setTitle(title);
+        displayRelatively(frame, owner);
     }
 }
